@@ -1,10 +1,13 @@
 package com.firstProject.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class CustomerOrder {
     private Long id;
     private Long customerId;
+    @JsonProperty(value = "item")
     private String itemName;
     private Float price;
     public CustomerOrder() {}

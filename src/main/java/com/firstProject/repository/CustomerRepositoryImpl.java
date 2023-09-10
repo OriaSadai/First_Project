@@ -39,10 +39,10 @@ public class CustomerRepositoryImpl implements CustomerRepository{
                     customer.getLastName(),
                     customer.getEmail(),
                     customer.getCustomerType().name(),
-                    customer.getCustomerId()
+                    customer.getId()
             );
         }catch (EmptyResultDataAccessException e){
-            System.out.println("Id " + customer.getCustomerId() + " is not exist");
+            System.out.println("Id " + customer.getId() + " is not exist");
         }
     }
     @Override

@@ -12,7 +12,7 @@ CREATE TABLE customer (
 
 CREATE TABLE customer_order (
     id int(11) unsigned NOT NULL AUTO_INCREMENT,
-    customer_id int(11) unsigned NOT NULL,
+    customer_id int(11) NOT NULL,
     item_name varchar(300) NOT NULL DEFAULT '',
     price DECIMAL(100,2) NOT NULL DEFAULT '',
     PRIMARY KEY (id),

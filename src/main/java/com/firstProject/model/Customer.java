@@ -4,22 +4,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Customer {
     @JsonProperty(value = "id")
-    private Long customerId;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
     @JsonProperty(value = "type")
     private CustomerType customerType;
     public Customer(){}
-    public Customer(Long customerId, String firstName, String lastName, String email, CustomerType customerType) {
-        this.customerId = customerId;
+    public Customer(Long id, String firstName, String lastName, String email, CustomerType customerType) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.customerType = customerType;
     }
-    public Long getCustomerId() {
-        return customerId;
+    public Long getId() {
+        return id;
     }
     public String getFirstName() {
         return firstName;
@@ -34,7 +34,7 @@ public class Customer {
         return customerType;
     }
     public void setCustomerId(Long id) {
-        this.customerId = id;
+        this.id = id;
     }
     public void setFirstName(String firstName) {
         this.firstName = firstName;

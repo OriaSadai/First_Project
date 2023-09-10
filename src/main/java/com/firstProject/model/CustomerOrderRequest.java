@@ -1,6 +1,10 @@
 package com.firstProject.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CustomerOrderRequest {
     private Customer customer;
+    @JsonProperty(value = "order")
     private CustomerOrder customerOrder;
     public CustomerOrderRequest() {}
     public CustomerOrderRequest(Customer customer, CustomerOrder customerOrder) {
@@ -8,10 +12,10 @@ public class CustomerOrderRequest {
         this.customerOrder = customerOrder;
     }
     public Customer getCustomer() {
-        return customer;
+        return this.customer;
     }
     public CustomerOrder getCustomerOrder() {
-        return customerOrder;
+        return this.customerOrder;
     }
 
     public void setCustomer(Customer customer) {
@@ -23,7 +27,7 @@ public class CustomerOrderRequest {
     public CustomerOrder toCustomerOrder(){
         return new CustomerOrder(
                 this.customerOrder.getId(),
-                this.customer.getCustomerId(),
+                this.customer.getId(),
                 this.customerOrder.getItemName(),
                 this.customerOrder.getPrice()
         );

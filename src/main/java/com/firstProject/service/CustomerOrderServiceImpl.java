@@ -19,20 +19,20 @@ public class CustomerOrderServiceImpl implements CustomerOrderService {
     @Override
     public CustomerOrderResponse createCustomerOrder(CustomerOrderRequest customerOrderRequest) throws JsonProcessingException {
         Customer selectedCustomer = customerOrderRequest.getCustomer();
-        Long createCustomerId = customerOrderRequest.getCustomer().getCustomerId();
+        Long createCustomerId = customerOrderRequest.getCustomer().getId();
         if (createCustomerId == null) {
             createCustomerId = customerService.createCustomer(selectedCustomer);
         } else {
-            Customer existingCustomer = customerService.getCustomerById(selectedCustomer.getCustomerId());
+            Customer existingCustomer = customerService.getCustomerById(selectedCustomer.getId());
             if (existingCustomer == null) {
-                throw new IllegalArgumentException("Can't find existing customer with customer id: " + selectedCustomer.getCustomerId());
+                throw new IllegalArgumentException("Can't find existing customer with customer id: " + selectedCustomer.getId());
             }
         }
-//        customerService.getCustomerById(createdCustomerId);
+        selectedCustomer = customerService.getCustomerById(createCustomerId);
         customerOrderRequest.setCustomer(selectedCustomer);
         CustomerOrder customerOrderToCreate = customerOrderRequest.toCustomerOrder();
         customerOrderRepository.createCustomerOrder(customerOrderToCreate);
-        List<CustomerOrder> customerOrders = customerOrderRepository.getAllCustomerOrdersByCustomerId(selectedCustomer.getCustomerId());
+        List<CustomerOrder> customerOrders = customerOrderRepository.getAllCustomerOrdersByCustomerId(selectedCustomer.getId());
         return customerOrderToCreate.toCustomerOrderResponse(selectedCustomer, customerOrders);
     }
     @Override
