@@ -19,6 +19,7 @@ public class CustomerRepositoryImpl implements CustomerRepository{
     private CustomerMapper customerMapper;
     @Override
     public Long createCustomer(Customer customer) {
+        System.out.println(String.format("5 In the CUSTOMER REPOSITORY: Writing to DB a customer %S %S",customer.getFirstName(),customer.getLastName()));
         String sql = "INSERT INTO " + CUSTOMER_TABLE_NAME + " " + "(first_name, last_name, email, customer_type) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(
                 sql,

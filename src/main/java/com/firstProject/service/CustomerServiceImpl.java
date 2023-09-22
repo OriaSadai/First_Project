@@ -14,6 +14,7 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
     @Override
     public Long createCustomer(Customer customer) throws JsonProcessingException {
+        System.out.println(String.format("3 In the CUSTOMER SERVICE: Starting to create a customer %s %S",customer.getFirstName(),customer.getLastName()));
         if (customer.getCustomerType() == CustomerType.VIP) {
             if (allowVip()) {
                 return customerRepository.createCustomer(customer);

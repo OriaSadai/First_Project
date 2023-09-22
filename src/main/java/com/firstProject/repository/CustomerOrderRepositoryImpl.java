@@ -20,6 +20,7 @@ public class CustomerOrderRepositoryImpl implements CustomerOrderRepository{
     private JdbcTemplate jdbcTemplate;
     @Override
     public void createCustomerOrder(CustomerOrder customerOrder) {
+        System.out.println(String.format("4 In the CUSTOMER ORDER REPOSITORY: Writing to DB an order item %s",customerOrder.getItemName()));
         String sql = "INSERT INTO " + CUSTOMER_ORDER_TABLE_NAME + " " + "(customer_id, item_name, price) VALUES (?, ?, ?)";
         jdbcTemplate.update(
                 sql,

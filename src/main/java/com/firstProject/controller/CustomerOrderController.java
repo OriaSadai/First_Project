@@ -15,6 +15,7 @@ public class CustomerOrderController {
     private CustomerOrderService customerOrderService;
     @PostMapping(value = "/create")
     public CustomerOrderResponse createCustomerOrder(@RequestBody CustomerOrderRequest customerOrderRequest) throws JsonProcessingException {
+        System.out.println(String.format("1 In the CUSTOMER ORDER CONTROLLER: Starting to create an order item %s for %s %s",customerOrderRequest.getCustomerOrder().getItemName(),customerOrderRequest.getCustomer().getFirstName(),customerOrderRequest.getCustomer().getLastName()));
         return customerOrderService.createCustomerOrder(customerOrderRequest);
     }
     @PutMapping(value = "/update")

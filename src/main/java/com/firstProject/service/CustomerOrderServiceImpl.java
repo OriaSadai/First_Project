@@ -18,6 +18,7 @@ public class CustomerOrderServiceImpl implements CustomerOrderService {
     private CustomerService customerService;
     @Override
     public CustomerOrderResponse createCustomerOrder(CustomerOrderRequest customerOrderRequest) throws JsonProcessingException {
+        System.out.println("2 In the CUSTOMER ORDER SERVICE: Starting to create an order id" + customerOrderRequest.getCustomerOrder().getId());
         Customer selectedCustomer = customerOrderRequest.getCustomer();
         Long createCustomerId = customerOrderRequest.getCustomer().getId();
         if (createCustomerId == null) {
